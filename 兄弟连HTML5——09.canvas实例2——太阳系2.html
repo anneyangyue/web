@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+			
+			<canvas id="canvas" width="1000" height="1000" style="background: black;">
+				您的浏览器不支持canvas标签，无法看到时钟
+			</canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById("canvas");
+		var cxt=canvas.getContext("2d");
+		
+		//轨道
+		function drawTrack(){
+			for(var i=0;i<8;i++){
+				cxt.beginPath();
+				cxt.arc(500,500,(i+1)*50,0,360,false);
+				cxt.closePath();
+				//设置笔触的颜色
+				cxt.strokeStyle="#fff";
+				cxt.stroke();
+			}
+		}
+		drawTrack();
+		
+		//星球
+		/*function drawStar(x,y,radius,cycle,sColor,eColor){
+			var time=0;
+			//保存之前的画布内容
+			cxt.save();
+			//重置0,0点
+			cxt.translate(500,500);
+			//设置旋转角度
+			cxt.rotate(time*(360/cycle)*Math.PI/180);
+			//画星球
+			cxt.beginPath();
+			cxt.arc(x,y,radius,0,360,false);
+			cxt.closePath();
+			//设置星球的填充颜色
+			var color=cxt.createRadialGradient(x,y,0,x,y,radius);
+			//设置渐变效果
+			color.addColorStop(0,sColor);//渐变开始点和颜色
+			color.addColorStop(1,eColor);//渐变结束点和颜色
+			cxt.fillStyle=color;//将渐变对象复制给填充画笔
+			//填充星球
+			cxt.fill();
+				
+			//恢复之前保存的画布内容
+			cxt.restore();
+			//执行完毕后时间增加
+			this.time+=1;
+		}
+		drawStar(0,0,20,0,"#f00","#f90");*/
+		function star(x,y,radius,cycle,sColor,eColor){
+			//画出星球需要哪些属性
+			//星球的坐标点
+			this.x=x;
+			this.y=y;
+			//星球的半径
+			this.radius=radius;
+			//公转周期
+			this.cycle=cycle;
+			//星球的颜色（开始色，结束色）
+			this.sColor=sColor;
+			this.eColor=eColor;
+			//新建一个渐变颜色空对象
+			this.color=null;
+			//设置一个计时器
+			this.time=0;
+			this.draw=function(){
+				//保存之前的画布内容
+				cxt.save();
+				//重置0,0点
+				cxt.translate(500,500);
+				//设置旋转角度
+				cxt.rotate(this.time*(360/this.cycle)*Math.PI/180);
+				//画星球
+				cxt.beginPath();
+				cxt.arc(this.x,this.y,this.radius,0,360,false);
+				cxt.closePath();
+				//设置星球的填充颜色
+				this.color=cxt.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);
+				//设置渐变效果
+				this.color.addColorStop(0,this.sColor);//渐变开始点和颜色
+				this.color.addColorStop(1,this.eColor);//渐变结束点和颜色
+				cxt.fillStyle=this.color;//将渐变对象复制给填充画笔
+				//填充星球
+				cxt.fill();
+				//恢复之前保存的画布内容
+				cxt.restore();
+				//执行完毕后时间增加
+				this.time+=1;
+			}
+		}
+
+		//创建一个太阳对象的构造函数
+		function Sun(){
+			star.call(this,0,0,20,0,"#f00","#f90");
+		}
+		
+		//创建一个水星对象的构造函数
+		function Mercury(){
+			star.call(this,0,-50,10,87.7,"#a69697","#5c3e40");
+		}
+		
+		//创建一个金星对象的构造函数
+		function Venus(){
+			star.call(this,0,-100,10,224.701,"#c4bbac","#1f1315");
+		}
+		
+		//创建一个地球对象的构造函数
+		function Earth(){
+			star.call(this,0,-150,10,365.225,"#78b1e8","#050c12");
+		}
+		
+		//创建一个火星对象的构造函数
+		function Mars(){
+			star.call(this,0,-200,10,686.98,"#cec9b6","#76422d");
+		}
+		
+		//创建一个木星对象的构造函数
+		function Juplter(){
+			star.call(this,0,-250,10,4332.589,"#c0a48e","#322222");
+		}
+		
+		//创建一个土星对象的构造函数
+		function Satum(){
+			star.call(this,0,-300,10,10759.5,"#f7f9e3","#5c4533");
+		}
+		
+		//创建一个天王星对象的构造函数
+		function Uranus(){
+			star.call(this,0,-350,10,30799.095,"#a7e1e5","#19243a");
+		}
+		
+		//创建一个天王星对象的构造函数
+		function Neptune(){
+			star.call(this,0,-400,10,60152,"#0661b2","#1e3b73");
+		}
+		
+		var sun=new Sun();
+		var mercury=new Mercury();
+		var venus=new Venus();
+		var earth=new Earth();
+		var mars=new Mars();
+		var juplter=new Juplter();
+		var satum=new Satum();
+		var uranus=new Uranus();
+		var neptune=new Neptune();
+		
+		function move(){
+			cxt.clearRect(0,0,1000,1000);
+			drawTrack();
+			sun.draw();
+			mercury.draw();
+			venus.draw();
+			earth.draw();
+			mars.draw();
+			juplter.draw();
+			satum.draw();
+			uranus.draw();
+			neptune.draw();
+		}
+		
+		
+		//使星球进行运动
+		setInterval(move,10);
+	</script>
+	</body>
+</html>
