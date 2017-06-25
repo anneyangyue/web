@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width,initital-scale=1"/>
+		<title>浏览器</title>
+		<link rel="stylesheet"  href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			body{
+				padding: 50px 0; 
+							
+			}
+			
+			
+			.col-md-4{
+				text-align: center;
+			}
+			.nav-container,footer,#containerone,#mycarousel{
+				width: 1000px;
+				margin: 0 auto;
+			}
+			.nav-content{
+				padding: 30px 0;
+			}
+			.row-h2{
+				font-size: 50px;
+				color: #2a6496;
+				
+			}
+			
+			footer{
+				text-align: center;
+				padding-top: 30px;
+				color: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand" >浏览器</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#demo-navbar" />
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+				</div>
+				<div class="collapse navbar-collapse" id="demo-navbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">综述</a></li>
+						<li><a href="#">简述</a></li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown">
+								特点<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#tab-chrome">Chrome</a></li>
+								<li><a href="#tab-firefox">Firefox</a></li>
+								<li><a href="#tab-safari">Safari</a></li>
+								<li><a href="#tab-opera">Opera</a></li>
+								<li><a href="#tab-ie">IE</a></li>
+							</ul>
+						</li>
+						
+						<li><a href="#" data-toggle="modal" data-target="#mymodal">关于</a></li>
+					</ul>
+						
+					
+				</div>
+			</div>
+		</nav>
+
+		
+		
+		
+		<div class="container" id="containerone">
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<img src="img/2010071822560954_01.png" alt="Chrome" />
+					<h2>Chrome</h2>
+					<p>Google Chrome,又称Google浏览器，是一个由Google(谷歌)公司开发的网页浏览器</p>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<img src="img/2010071822560954_02.png" alt="Firefox" />
+					<h2>Firefox</h2>
+					<p>Firefox,中文名通常称为“火狐”或“火狐浏览器”，是一个自由及开源代码网页浏览器</p>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<img src="img/2010071822560954_03.png" alt="Opera" />
+					<h2>IE</h2>
+					<p>IE(Internet Explorer)浏览器，是美国微软公司推出的一款网页浏览器</p>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="container nav-container">
+			<ul class="nav nav-tabs" id="tab-list">
+				<li class="active"><a href="#tab-chrome" data-toggle="tab">Chrome</a></li>
+				<li><a href="#tab-firefox" data-toggle="tab">Firefox</a></li>
+				<li><a href="#tab-safari" data-toggle="tab">Safari</a></li>
+				<li><a href="#tab-opera" data-toggle="tab">Opera</a></li>
+				<li><a href="#tab-ie" data-toggle="tab">IE</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-chrome">
+					<div class="row">
+						<div class="col-md-10">
+							<h2 class="row-h2">Chrome</h2>
+							<p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。该浏览器是基于其他开源软件所撰写，包括WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。软件的名称是来自于称作Chrome的网络浏览器图形使用者界面（GUI）。软件的beta测试版本在2008年9月2日发布，提供50种语言版本，有Windows、OS X、Linux、Android、以及iOS版本提供下载。</p>
+						</div>
+						<div class="col-md-2">
+							<img src="img/2010071822560954_01.png" alt="Chrome" />
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-firefox">
+					<div class="row nav-content">
+						<div class="col-md-2">
+							<img src="img/2010071822560954_02.png" alt="Firefox" />
+						</div>
+						<div class="col-md-10">
+							<h2 class="row-h2">Firebox</h2>
+							<p>Mozilla Firefox，中文俗称“火狐”（正式缩写为Fx或fx，非正式缩写为FF），是一个自由及开放源代码网页浏览器，使用Gecko排版引擎，支持多种操作系统，如Windows、Mac OS X及GNU/Linux等。该浏览器提供了两种版本，普通版和ESR（Extended Support Release，延长支持）版，ESR版本是 Mozilla 专门为那些无法或不愿每隔六周就升级一次的企业打造。Firefox ESR 版的升级周期为 42 周，而普通 Firefox 的升级周期为
+								6 周。</p>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-safari">
+					<div class="row nav-content">
+						<div class="col-md-10">
+							<h2 class="row-h2">safari</h2>
+							<p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器，使用了KDE的KHTML作为浏览器的运算核心。Safari,苹果计算机的最新操作系统Mac OS X中新的浏览器，用来取代之前的Internet ExplorerforMac。Safari使用了KDE的KHTML作为浏览器的计算核心。 该浏览器已支持Windows平台，但是与运行在Mac OS X上的safari相比，有些功能出现丢失。Safari也是iPhone手机、iPodTouch、iPad平板电脑中iOS指定默认浏览器。</p>
+						</div>
+						<div class="col-md-2">
+							<img src="img/2010071822560954_07.png" alt="safari" />
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-opera">
+					<div class="row nav-content">
+						<div class="col-md-2">
+							<img src="img/2010071822560954_06.png" alt="Opera" />
+						</div>
+						<div class="col-md-10">
+							<h2 class="row-h2">Opera</h2>
+							<p>Opera浏览器，是一款挪威Opera Software ASA公司制作的支持多页面标签式浏览的网络浏览器，是跨平台浏览器可以在Windows、Mac和Linux三个操作系统平台上运行。Opera浏览器创始于1995年4月。2016.1.25日最新版本34.0（34.0.2036.50）。</p>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-ie">
+					<div class="row nav-content">
+						<div class="col-md-10">
+							<h2 class="row-h2">IE</h2>
+							<p>Internet Explorer，是美国微软公司推出的一款网页浏览器。原称Microsoft Internet Explorer(6版本以前)和Windows Internet Explorer(7、8、9、10、11版本)，简称IE。在IE7以前，中文直译为“网络探路者”，但在IE7以后官方便直接俗称"IE浏览器"。</p>
+						</div>
+						<div class="col-md-2">
+							<img src="img/2010071822560954_03.png" alt="IE" />
+						</div>
+					</div>
+				</div>	
+			</div>
+
+		</div>
+		
+		<footer>
+			<p class="pull-right"><a href="#top">回到顶部</a></p>
+			<p>版权声明</p>
+		</footer>
+		
+		<div class="modal fade" id="mymodal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						
+						<button type="button" class="close" data-dismiss="modal">
+							<span>&times;</span>
+							
+						</button>
+						<h4>关于</h4>
+					</div>
+					<div class="modal-body">
+						浏览器是指可以显示网页服务器或者文件系统的HTML文件（标准通用标记语言的一个应用）内容，并让用户与这些文件交互的一种软件。
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">了解了</button>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery-1.12.0.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script>
+		
+			$(function(){
+				$('#demo-navbar .dropdown a').click(function(){
+					var href=$(this).attr("href");
+					$("#tab-list a[href='"+href+"']").tab("show");
+					
+				})
+			})
+			
+			
+			$('#mycarousel').carousel({
+				interval:2000,
+			})
+		</script>
+	</body>
+</html>
