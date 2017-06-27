@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5在线画图板</title>
+		<link rel="stylesheet" href="css/canvas.css"  type="text/css"/>
+	</head>
+	<body>
+			
+			<!--本章概要
+			1.画图板功能分析
+			2.画图板技术分析
+			3.绘制页面、美化页面
+			4.编辑功能。先画一个简单的画图板分析思路，然后应用到项目中。
+			
+			画图板功能分析
+			1.功能区（保存、清空）
+			2.工具区（形状和工具）
+			属性设置区（颜色和线宽）
+			4.绘图区域（canvas标签）
+			
+			技术需求分析
+			1.页面布局————HTML5标签
+			2.页面美化————CSS2
+			3.功能设置————js编程
+			4.canvas api————属性设置、画线、写字、画图、画布操作（清空、获取画布信息）
+			5、下载————php的下载（js无法操作本地文件）
+			
+			图像：
+				单独的按钮组，保存图片、清楚画布
+			操作组（所有按钮只能选取一个）:
+				工具（画笔、橡皮、油漆桶、吸管、文字、放大）
+				形状（画线、画圆圈、画方框、画三角形、画圆形、画方形）
+			粗细（线宽只能选择一个）
+				1px,3px,5px,8px
+			颜色（颜色只能选择一个）
+				红、绿、蓝、黄、白、黑、粉、紫、青、橙
+			-->
+			
+		<header id="header">HTML5在线画图板</header>	
+		<section id="content">
+			<!--工具区域-->
+			<ul id="tool">
+				<li>
+					<h3>图像</h3>
+					<hr />
+					<ul id="image">
+						<li id="saveimg">
+							<button onclick="saveimg()">保存图片</button>s
+						</li>
+						<li id="clearimg">
+							<button onclick="clearimg()">清空画板</button>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h3>工具</h3>
+					<hr />
+					<ul id="means">
+						<li id="means_brush" onclick="drawBrush(0)">
+							<img src="img/brush.png" />
+						</li>
+						<li id="means_eraser" onclick="drawEraser(1)">
+							<img src="img/eraser.png" />
+						</li>
+						<li id="means_paint" onclick="drawPaint(2)">
+							<img src="img/paint.png" />
+						</li>
+						<li id="means_straw" onclick="drawStraw(3)">
+							<img src="img/straw.png" />
+						</li>
+						<li id="means_text" onclick="drawText(4)">
+							<img src="img/text.png" />
+						</li>
+						<li id="means_magnifier" onclick="drawMagnifier(5)">
+							<img src="img/magnifier.png" />
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h3>形状</h3>
+					<hr />
+					<ul id="shape">
+						<li id="shape_line" onclick="drawLine(6)">
+							<img src="img/line.png" />
+						</li>
+						<li id="shape_arc" onclick="drawArc(7)">
+							<img src="img/arc.png" />
+						</li>
+						<li id="shape_rect" onclick="drawRect(8)">
+							<img src="img/rect.png" />
+						</li>
+						<li id="shape_poly" onclick="drawPoly(9)">
+							<img src="img/poly.png" />
+						</li>
+						<li id="shape_arcfill" onclick="drawArcfill(10)">
+							<img src="img/fillarc.png" />
+						</li>
+						<li id="shape_rectfill" onclick="drawRectfill(11)">
+							<img src="img/fillrect.png" />
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h3>线宽</h3>
+					<hr />
+					<ul id="size">
+						<li id="width_1" onclick="setLineWidth(0)">
+							<img src="img/line_1.png" />
+						</li>
+						<li id="width_3" onclick="setLineWidth(1)">
+							<img src="img/line_3.png" />
+						</li>
+						<li id="width_5" onclick="setLineWidth(2)">
+							<img src="img/line_5.png" />
+						</li>
+						<li id="width_8" onclick="setLineWidth(3)">
+							<img src="img/line_8.png" />
+						</li>
+					</ul>
+				</li>
+				<li>
+					<h3>颜色</h3>
+					<hr />
+					<ul id="color">
+						<li id="red" onclick="setColor(this,0)"></li>
+						<li id="green" onclick="setColor(this,1)"></li>
+						<li id="blue" onclick="setColor(this,2)"></li>
+						<li id="yellow" onclick="setColor(this,3)"></li>
+						<li id="white" onclick="setColor(this,4)"></li>
+						<li id="black" onclick="setColor(this,5)"></li>
+						<li id="pink" onclick="setColor(this,6)"></li>
+						<li id="purple" onclick="setColor(this,7)"></li>
+						<li id="cyan" onclick="setColor(this,8)"></li>
+						<li id="orange" onclick="setColor(this,9)"></li>
+					</ul>
+				</li>
+			</ul>
+			<!--绘图区域-->
+			<canvas id="canvas" width="880" height="400">
+				您的浏览器不支持canvas标签，请升级浏览器
+			</canvas>
+			<!--请在canvas标签之后引入js文件-->
+		</section>
+		<footer id="footer">
+			<small>版权所有，盗版必究@杨越</small>
+		</footer>
+			
+	<script type="text/javascript" src="js/canvas.js"></script>
+	</body>
+</html>

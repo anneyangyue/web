@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	
+			<!--本章概要
+			1.分析太阳系的组成
+			2.分析需要的canvas技术
+			3.动手操作
+			  (1)先画一个太阳和地球的简单旋转
+			  (2)再画一个太阳和八大行星的组合
+			  
+			主要应用的技术
+			1.canvas画线
+			2.canvas画圆
+			3.笔触修改和填充笔修改
+			4.制作渐变色
+			5.角度旋转
+			6.js部分对象和方法（setInterval）-->
+			
+			<canvas id="canvas" width="1000" height="1000" style="background: black;">
+				您的浏览器不支持canvas标签，无法看到时钟
+			</canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById("canvas");
+		var cxt=canvas.getContext("2d");
+		
+		//声明一个时间参数(1:一天)
+		var time=0;
+		function draw(){
+			//清除画布
+			cxt.clearRect(0,0,1000,1000);
+			//画轨迹
+			//设置笔触颜色
+			cxt.strokeStyle="#fff";
+			cxt.beginPath();
+			cxt.arc(500,500,100,0,360,false);
+			cxt.closePath();
+			cxt.stroke();
+			
+			//画太阳
+			cxt.beginPath();
+			cxt.arc(500,500,20,0,360,false);
+			cxt.closePath();
+			//太阳需要填充颜色
+			//设置填充颜色（渐变色）
+			//cxt.createRadialGradient(内圆心x,内圆心y,内半径,外圆心x,外圆心y,外半径)；
+			var sunColor=cxt.createRadialGradient(500,500,0,500,500,20);
+			sunColor.addColorStop(0,"#f00");
+			sunColor.addColorStop(1,"#f90");
+			cxt.fillStyle=sunColor;
+			cxt.fill();
+			
+			//画地球
+			cxt.save();
+			//设置一下异次元空间的0，0点
+			cxt.translate(500,500);
+			//设置旋转角度
+			//cxt.rotate(90*Math.PI/180);
+			//地球公转一周需要365天，一天转365/360度
+			cxt.rotate(time*365/360*Math.PI/180);
+			//画出地球
+			cxt.beginPath();
+			cxt.arc(0,-100,10,0,360,false);
+			cxt.closePath();
+			//设置一下地球的颜色
+			var earthColor=cxt.createRadialGradient(0,-100,0,0,-100,10);
+			earthColor.addColorStop(0,"#78B1E8");
+			earthColor.addColorStop(1,"#050C12");
+			cxt.fillStyle=earthColor;
+			cxt.fill();
+			cxt.restore();
+			//每画一次图像，时间参数加1
+			time+=1;
+		}
+		
+		//使地球动起来
+		setInterval(draw,10);
+	</script>
+	</body>
+</html>

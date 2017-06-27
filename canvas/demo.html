@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5在线画图板</title>
+	</head>
+	<body>
+			
+		<canvas id="demo" width="500" height="500" style="border: 1px solid red;">
+			您的浏览器不支持canvas，请升级
+		</canvas>
+			
+		<script type="text/javascript">
+			var canvas=document.getElementById("demo");
+			var cxt=canvas.getContext("2d");
+			
+			//画图的步骤
+			/*cxt.beginPath();
+			cxt.moveTo();//鼠标按下的时候
+			cxt.lineTo();
+			cxt.lineTo();
+			cxt.lineTo();//鼠标移动的时候
+			cxt.closePath();
+			cxt.stroke();//鼠标移动的时候*/
+			//结束绘图的时候 //鼠标抬起
+			
+			var flag=0;//设置标志位————检测鼠标是否按下
+			
+			//鼠标按下的时候————设置开始点
+			canvas.onmousedown=function(evt){
+				//获取当前鼠标相对于canvas起始点（0,0）的坐标
+				//获取鼠标相对于页面顶端的距离
+				//整合鼠标事件（针对W3C和IE）
+				evt=window.event||evt;
+				//pageX,pageY 鼠标相对于页面的横纵坐标
+				//alert(evt.pageX+"------"+evt.pageY);
+				//获取当前对象（标签）相对于页面顶端的距离
+				//alert(this.offsetLeft+"----"+this.offsetTop);
+				//鼠标相当于canvas 0,0点的
+				var startX=evt.pageX-this.offsetLeft;
+				var startY=evt.pageY-this.offsetTop;
+				cxt.beginPath();
+				cxt.moveTo(startX,startY);
+				flag=1;
+			}
+			
+			//鼠标移动的时候————不同的绘图（获取鼠标的位置）
+			canvas.onmousemove=function(evt){
+				evt=window.event||evt;
+				var endX=evt.pageX-this.offsetLeft;
+				var endY=evt.pageY-this.offsetTop;
+				//判断一下鼠标是否按下
+				if(flag){
+					//移动的时候设置路径并且画出来
+					cxt.lineTo(endX,endY);
+					cxt.stroke();
+				}
+			}
+			
+			//鼠标抬起的时候结束绘图
+			canvas.onmouseup=function(){
+				flag=0;
+			}
+			
+			//鼠标移出canvas的时候必须取消画图操作
+			canvas.onmouseout=function(){
+				flag=0;
+			}
+			
+		</script>
+	</body>
+</html>

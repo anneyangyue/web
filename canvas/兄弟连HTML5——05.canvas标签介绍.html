@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	
+			
+		<!--一、canvas的使用-->
+			<canvas id="canvas" height="500" width="500">
+				您的浏览器不支持canvas标签
+			</canvas>
+			 
+			 <!--canvas标签在页面中只显示一个设定背景色的画布，如果要产生新内容或者进行画布操作，需要借助canvas API(HTML5的内置context对象)和JavaScript操作实现画图或者其他图像操作-->
+			
+	<script type="text/javascript">
+		//获取画布DOM，还不可以操作
+		var canvas=document.getElementById("canvas");
+		//alert(canvas);
+		//设置绘图环境
+		var cxt=canvas.getContext("2d");
+		//alert(cxt);
+		
+		//画一条线段
+			//开始路径
+			cxt.beginPath();
+			//设置画笔的宽度
+			cxt.lineWidth=10;
+			//设置画笔的颜色
+			cxt.strokeStyle="aqua";
+			//设置笔触的位置
+			cxt.moveTo(20,20);
+			//设置移动的方式
+			cxt.lineTo(100,20);
+			//画线
+			cxt.stroke();
+			//封闭路径
+			cxt.closePath();
+			
+		//画一个空心圆形，凡是路径图形必须先开始路径，画完图之后必须接受路径
+			//开始新路径
+			cxt.beginPath();
+			//重新设置画笔
+			cxt.lineWidth=3;
+			cxt.strokeStyle="green";
+			cxt.arc(200,200,50,0,360,false);
+			cxt.stroke();
+			//封闭新路径
+			cxt.closePath();
+			
+		//画一个实心圆形
+			cxt.beginPath();
+			//设置填充的颜色
+			cxt.fillStyle="rgb(255,0,0)";
+			cxt.arc(200,100,50,0,360,false);
+			cxt.fill();
+			cxt.stroke();
+			cxt.closePath();
+			
+		//画一个矩形
+			cxt.beginPath();
+			cxt.rect(300,20,100,100);
+			cxt.stroke();
+			cxt.closePath();
+			//其他方法，建议使用此方式
+			cxt.strokeRect(300,150,100,100);
+			
+		//实心矩形
+			cxt.beginPath();
+			cxt.rect(300,270,100,100);
+			cxt.fill();
+			cxt.closePath();
+			//其他方法，建议使用此方式
+			cxt.fillRect(300,390,100,100);
+		
+		//设置文字
+			cxt.font="40px 宋体";//css font属性
+			cxt.fillText("无兄弟，不编程",20,300);
+			//将笔触设置为1像素
+			cxt.lineWidth=1;
+			cxt.strokeText("无兄弟，不编程",20,350);
+			
+		//画图，把一幅图片画到画布中 注意webkit内核的浏览器 chrome和猎豹不支持
+			var img=new Image();
+			img.src="img/fc2ed29f1b512e47!250x250.jpg";
+			cxt.drawImage(img,20,70,230,306);
+		
+		//画一个三角形
+			cxt.beginPath();
+			//移动至开始点
+			cxt.moveTo(100,100);
+			cxt.lineTo(100,200);
+			cxt.lineTo(200,150);
+			cxt.closePath();//填充或者画路径需要先闭合路径再画
+			cxt.stroke();
+			
+		//实心三角形
+		cxt.beginPath();
+			//移动至开始点
+			cxt.moveTo(100,100);
+			cxt.lineTo(150,200);
+			cxt.lineTo(100,200);
+			cxt.closePath();
+			cxt.fill();
+			
+		//旋转图片 
+			//设置旋转环境
+			cxt.save();
+			//在异次元空间重置0,0点的位置
+			cxt.translate(20,20);
+			//图片、形状旋转
+			//设置旋转角度 参数是弧度 角度 0-360 弧度=角度*Math.PI/180
+			cxt.rotate(-30*Math.PI/180);
+			//旋转一条线段
+			cxt.lineWidth=10;
+			cxt.beginPath();
+			cxt.moveTo(0,0);
+			cxt.lineTo(20,100);
+			cxt.stroke();
+			cxt.closePath();
+			//將旋轉之后的元素放回原画布
+			cxt.restore();
+			//过程不可颠倒，先设置00点，再旋转角度，然后画图
+	</script>
+	</body>
+</html>
